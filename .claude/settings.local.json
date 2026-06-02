@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(netstat -ano)",
+      "Bash(findstr \":8083\")",
+      "Bash(findstr LISTENING)",
+      "PowerShell(taskkill /PID 22892 /F)",
+      "PowerShell($proc = netstat -ano | Select-String \":8083 \" | Select-String \"LISTENING\"; if \\($proc\\) { $pid = \\($proc -split '\\\\s+'\\)[-1]; Write-Host \"Killing PID $pid\"; taskkill /PID $pid /F } else { Write-Host \"No process on 8083\" })"
+    ]
+  }
+}
